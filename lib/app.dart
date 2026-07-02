@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:football_ui_app/colors.dart';
 import 'package:football_ui_app/home_screen.dart';
+import 'package:football_ui_app/strings.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class MyBottomNavigationBarItems extends StatelessWidget {
@@ -19,22 +20,29 @@ class MyBottomNavigationBarItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){onTap();},
+      onTap: () {
+        onTap();
+      },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: isActive ? AppColors.kpreamaryColor : Colors.white,
+          color: isActive ? AppColors.kpreamaryColor : AppColors.kwhiteColor,
           borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
         ),
         child: Column(
           children: [
             Icon(
               iconData,
-              color: isActive ? Colors.white : Colors.grey.shade200,
+              color: isActive
+                  ? AppColors.kwhiteColor
+                  : AppColors.kGreyColor.shade200,
             ),
             if (isActive) ...[
-              Text(title, style: TextStyle(color: Colors.white, fontSize: 14)),
+              Text(
+                title,
+                style: TextStyle(color: AppColors.kwhiteColor, fontSize: 14),
+              ),
             ],
           ],
         ),
@@ -65,7 +73,12 @@ class _MyWidgetState extends State<MyApp> {
     Icons.person_outline,
   ];
 
-  final titles = ["Home", "Calender", "Standing", "Account"];
+  final titles = [
+    AppStrings.home,
+    AppStrings.calender,
+    AppStrings.standing,
+    AppStrings.account,
+  ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -75,10 +88,10 @@ class _MyWidgetState extends State<MyApp> {
           height: 80,
           padding: EdgeInsets.only(top: 10),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.kwhiteColor,
             boxShadow: [
               BoxShadow(
-                color: Colors.black12..withValues(alpha: 0.015),
+                color: AppColors.kblackColor..withValues(alpha: 0.015),
                 blurRadius: 8,
                 spreadRadius: 5,
               ),
@@ -93,7 +106,6 @@ class _MyWidgetState extends State<MyApp> {
                 isActive: index == currentIndex,
                 onTap: () => setState(() {
                   currentIndex = index;
-                  print(index);
                 }),
                 iconData: icons[index],
               ),
