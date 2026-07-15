@@ -10,6 +10,58 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.kwhiteColor,
       appBar: appBar(),
+
+      body: Column(children: [liveMatchText()]),
+    );
+  }
+
+  Padding liveMatchText() {
+    return Padding(
+      padding: EdgeInsets.all(20),
+      child: Row(
+        children: [
+          Text(
+            "Live Match",
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 24,
+              color: Colors.black54,
+              letterSpacing: -1.5,
+            ),
+          ),
+          Spacer(),
+          Container(
+            padding: EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: AppColors.kwhiteColor,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 20,
+                  color: Colors.black12.withValues(alpha: 0.08),
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                //TODOV ADD IMAGE Image.asset(name;,height: 30,width: 30,)
+                SizedBox(width: 3),
+                Text(
+                  "Premier League",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.kblackColor,
+                    letterSpacing: -1,
+                  ),
+                ),
+                SizedBox(width: 3),
+                Icon(Icons.keyboard_arrow_down_outlined),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
